@@ -12,6 +12,7 @@
   "dependencies": {
     "@clerk/clerk-react": "^5.17.0",
     "@reduxjs/toolkit": "^1.9.7",
+    "dotenv": "^16.4.7",
     "firebase": "^10.6.0",
     "i18next": "^23.10.1",
     "react": "^18.2.0",
