@@ -19,12 +19,35 @@ export default function Home() {
   
 
   useEffect(() => {
+    // const accessToken = Cookies.get('access_token');
+    // console.log(accessToken);
     const fetchOfferListings = async () =>{
       try {
-        const res = await fetch('/api/listing/get?offer=true&limit=4');
+        const res = await fetch(`${import.meta.env.VITE_APP_API_URL}/api/listing/get?offer=true&limit=4`, {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            'Cache-Control': 'no-cache',
+            'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Credentials': 'true',
+            'Pragma': 'no-cache',
+            'Expires': '0',
+          },
+        });
+        // const res = await fetch('/api/listing/get?offer=true&limit=4', {
+        //   method: 'GET',
+        //   headers: {
+        //     'Cache-Control': 'no-cache',
+        //     'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+        //     'Pragma': 'no-cache',
+        //     'Expires': '0',
+        //   },
+        // });
+        // console.log(res)
         const data = await res.json();
         // console.log(data)
         setOfferListings(data);
+        setLoading(false);
         fetchRentListings();
       } catch (error) {
         console.log(error)
@@ -33,9 +56,29 @@ export default function Home() {
 
     const fetchRentListings = async () => {
       try {
-        const res = await fetch('/api/listing/get?type=rent&limit=4');
+        const res = await fetch(`${import.meta.env.VITE_APP_API_URL}/api/listing/get?type=rent&limit=4`, {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            'Cache-Control': 'no-cache',
+            'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Credentials': 'true',
+            'Pragma': 'no-cache',
+            'Expires': '0',
+          },
+        });
+        // const res = await fetch('/api/listing/get?type=rent&limit=4', {
+        //   method: 'GET',
+        //   headers: {
+        //     'Cache-Control': 'no-cache',
+        //     'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+        //     'Pragma': 'no-cache',
+        //     'Expires': '0',
+        //   },
+        // });
         const data = await res.json();
         setRentListings(data);
+        setLoading(false);
         fetchSaleListings();
       } catch (error) {
         console.log(error)
@@ -44,9 +87,28 @@ export default function Home() {
 
     const fetchSaleListings = async () => {
       try {
-        const res = await fetch('/api/listing/get?type=sale&limit=4');
+        const res = await fetch(`${import.meta.env.VITE_APP_API_URL}/api/listing/get?type=sale&limit=4`, {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            'Cache-Control': 'no-cache',
+            'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Credentials': 'true',
+            'Pragma': 'no-cache',
+            'Expires': '0',
+          },
+        });
+        // const res = await fetch('/api/listing/get?type=sale&limit=4', {
+        //   method: 'GET',
+        //   headers: {
+        //     'Cache-Control': 'no-cache',
+        //     'Pragma': 'no-cache',
+        //     'Expires': '0',
+        //   },
+        // });
         const data = await res.json();
         setSaleListings(data);
+        setLoading(false);
       } catch (error) {
         console.log(error)
       }
