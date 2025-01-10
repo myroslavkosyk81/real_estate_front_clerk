@@ -23,6 +23,7 @@ export default function Home() {
       try {
         const res = await fetch('/api/listing/get?offer=true&limit=4');
         const data = await res.json();
+        // console.log(data)
         setOfferListings(data);
         fetchRentListings();
       } catch (error) {
