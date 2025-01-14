@@ -128,7 +128,7 @@ export default function Profile() {
       }
       const currentUserId = userId;
       console.log(currentUserId)
-      const res = await fetch(`/api/user/listings/${currentUserId}`, {
+      const res = await fetch(`${import.meta.env.VITE_APP_API_URL}/api/user/listings/${currentUserId}`, {
         method: "GET", // or GET, PUT, DELETE depending on your API
         headers: {
           "Content-Type": "application/json",
